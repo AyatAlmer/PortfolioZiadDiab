@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Ziad Diab Portfolio</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      scroll-behavior:smooth;
+    }
+
+    :root{
+      --bg:#0f172a;
+      --card:#1e293b;
+      --text:#fff;
+      --main:#38bdf8;
+      --gray:#94a3b8;
+      --second:#111827;
+    }
+
+    body.light{
+      --bg:#f8fafc;
+      --card:#e2e8f0;
+      --text:#0f172a;
+      --gray:#475569;
+      --second:#ffffff;
+    }
+
+    body{
+      font-family:'Poppins',sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      overflow-x:hidden;
+      transition:.4s;
+    }
+
+    section{
+      padding:100px 10%;
+    }
+
+    .title{
+      text-align:center;
+      font-size:42px;
+      margin-bottom:60px;
+    }
+
+    .title span{
+      color:var(--main);
+    }
+
+    nav{
+      position:fixed;
+      width:100%;
+      top:0;
+      left:0;
+      padding:20px 10%;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      background:rgba(15,23,42,.75);
+      backdrop-filter:blur(10px);
+      z-index:1000;
+    }
+
+    .logo{
+      font-size:28px;
+      font-weight:700;
+      color:var(--main);
+    }
+
+    nav ul{
+      display:flex;
+      gap:30px;
+      list-style:none;
+    }
+
+    nav ul li a{
+      color:var(--text);
+      text-decoration:none;
+      transition:.3s;
+      font-weight:500;
+    }
+
+    nav ul li a:hover{
+      color:var(--main);
+    }
+
+    .toggle{
+      width:45px;
+      height:45px;
+      border:none;
+      border-radius:50%;
+      cursor:pointer;
+      background:var(--main);
+      color:white;
+      font-size:18px;
+    }
+
+    /* HERO */
+
+    .hero{
+      min-height:100vh;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:50px;
+      flex-wrap:wrap;
+    }
+
+    .hero-text{
+      flex:1;
+      animation:slideLeft 1s ease;
+    }
+
+    .hero-text h1{
+      font-size:65px;
+      line-height:1.2;
+      margin-bottom:20px;
+    }
+
+    .hero-text h1 span{
+      color:var(--main);
+    }
+
+    .hero-text h3{
+      font-size:28px;
+      margin-bottom:20px;
+      color:var(--gray);
+    }
+
+    .hero-text p{
+      line-height:1.9;
+      color:var(--gray);
+      margin-bottom:30px;
+    }
+
+    .btn{
+      display:inline-block;
+      padding:15px 35px;
+      border-radius:40px;
+      background:var(--main);
+      color:white;
+      text-decoration:none;
+      transition:.4s;
+      font-weight:600;
+    }
+
+    .btn:hover{
+      transform:translateY(-5px);
+      box-shadow:0 10px 25px rgba(56,189,248,.5);
+    }
+
+    .hero-img{
+      flex:1;
+      display:flex;
+      justify-content:center;
+      animation:float 4s ease-in-out infinite;
+    }
+
+    .hero-img img{
+      width:380px;
+      height:500px;
+      object-fit:cover;
+      border-radius:30px;
+      border:4px solid var(--main);
+      box-shadow:0 20px 40px rgba(0,0,0,.4);
+    }
+
+    /* ABOUT */
+
+    .about-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+      gap:30px;
+    }
+
+    .card{
+      background:var(--card);
+      padding:35px;
+      border-radius:25px;
+      transition:.4s;
+    }
+
+    .card:hover{
+      transform:translateY(-10px);
+    }
+
+    .card h3{
+      margin-bottom:20px;
+      color:var(--main);
+    }
+
+    .card p{
+      color:var(--gray);
+      line-height:1.8;
+    }
+
+    /* SKILLS */
+
+    .skills-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      gap:25px;
+    }
+
+    .skill{
+      background:var(--card);
+      padding:30px;
+      border-radius:20px;
+      text-align:center;
+      transition:.4s;
+    }
+
+    .skill:hover{
+      background:var(--main);
+      transform:scale(1.05);
+    }
+
+    .skill h3{
+      font-size:20px;
+    }
+
+    /* PROJECTS */
+
+    .projects-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+      gap:30px;
+    }
+
+    .project{
+      background:var(--card);
+      border-radius:25px;
+      overflow:hidden;
+      transition:.4s;
+    }
+
+    .project:hover{
+      transform:translateY(-10px);
+    }
+
+    .project img{
+      width:100%;
+      height:230px;
+      object-fit:cover;
+    }
+
+    .project-content{
+      padding:25px;
+    }
+
+    .project-content h3{
+      margin-bottom:15px;
+      color:var(--main);
+    }
+
+    .project-content p{
+      color:var(--gray);
+      line-height:1.7;
+      margin-bottom:20px;
+    }
+    .project a{
+  text-decoration:none;
+  color:inherit;
+  display:block;
+}
+
+    /* CONTACT */
+
+    .contact-box{
+      max-width:700px;
+      margin:auto;
+      background:var(--card);
+      padding:40px;
+      border-radius:25px;
+      text-align:center;
+    }
+
+    .contact-box h3{
+      font-size:30px;
+      margin-bottom:20px;
+      color:var(--main);
+    }
+
+    .contact-box p{
+      margin-bottom:15px;
+      color:var(--gray);
+    }
+
+    footer{
+      padding:30px;
+      text-align:center;
+      background:var(--second);
+      color:var(--gray);
+    }
+
+    /* ANIMATION */
+
+    @keyframes float{
+      0%{
+        transform:translateY(0);
+      }
+      50%{
+        transform:translateY(-20px);
+      }
+      100%{
+        transform:translateY(0);
+      }
+    }
+
+    @keyframes slideLeft{
+      from{
+        opacity:0;
+        transform:translateX(-70px);
+      }
+      to{
+        opacity:1;
+        transform:translateX(0);
+      }
+    }
+
+    /* RESPONSIVE */
+
+    @media(max-width:900px){
+
+      nav ul{
+        display:none;
+      }
+
+      .hero{
+        flex-direction:column-reverse;
+        text-align:center;
+        padding-top:120px;
+      }
+
+      .hero-text h1{
+        font-size:45px;
+      }
+
+      .hero-img img{
+        width:300px;
+        height:400px;
+      }
+
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+
+  <nav>
+
+    <div class="logo">ZIAD</div>
+
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+      
+    </ul>
+
+    <button class="toggle" onclick="darkMode()">☀</button>
+
+  </nav>
+
+  <!-- HERO -->
+
+  <section class="hero" id="home">
+
+    <div class="hero-text">
+
+      <h1>Ziad <span>Diab</span></h1>
+
+      <h3>Back-End Laravel Developer</h3>
+
+      <p>
+        Information Technology Engineer specialized in Software Engineering.
+        Passionate about building scalable server-side applications,
+        RESTful APIs, authentication systems and modern admin dashboards.
+      </p>
+
+      <a href="https://github.com/ZiadDiab22" class="btn" target="_blank">
+        Visit Github
+      </a>
+
+    </div>
+
+    <div class="hero-img">
+
+      <img src="image/photo_2026-05-11_18-54-17.jpg" alt="Ziad Diab">
+
+    </div>
+
+  </section>
+
+  <!-- ABOUT -->
+
+  <section id="about">
+
+    <h2 class="title">About <span>Me</span></h2>
+
+    <div class="about-grid">
+
+      <div class="card">
+
+        <h3>Who Am I?</h3>
+
+        <p>
+          I’m a Software Engineering student and Laravel Back-End Developer
+          with strong experience in building APIs, authentication systems,
+          admin dashboards and scalable web applications.
+        </p>
+
+      </div>
+
+      <div class="card">
+
+        <h3>Experience</h3>
+
+        <p>
+          Worked as a Freelancer developing Laravel applications and APIs.
+          Experienced with Passport, Sanctum, JWT authentication and Filament admin panels.
+        </p>
+
+      </div>
+
+      <div class="card">
+
+        <h3>Education</h3>
+
+        <p>
+          Damascus University — Information Technology Engineering
+          (2019 - 2025)
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  
+<!-- WORK EXPERIENCE -->
+
+<section id="experience">
+
+  <h2 class="title">Work <span>Experience</span></h2>
+
+  <div class="about-grid">
+
+    <div class="card">
+
+      <h3>DS Enterprise — Data Entry</h3>
+
+      <p>
+        Entered scientific books and educational content into the company platform
+        to support master’s students and provide digital learning resources.
+      </p>
+
+    </div>
+
+    <div class="card">
+
+      <h3>Skilleehub — Junior Laravel Developer</h3>
+
+      <p>
+        Completed a one-month online internship working on Laravel and Filament PHP projects,
+        focusing on backend development and admin dashboard systems.
+      </p>
+
+    </div>
+
+    <div class="card">
+
+      <h3>Freelancer — Back-End Developer</h3>
+
+      <p>
+        Developed server-side applications using Laravel and MySQL,
+        including authentication systems, RESTful APIs and scalable backend architectures.
+      </p>
+
+    </div>
+
+    <div class="card">
+
+      <h3>Herotik Team — Freelance Developer</h3>
+
+      <p>
+        Collaborated with the Herotik freelance team on real-world projects,
+        contributing to backend development, APIs, realtime systems and deployment tasks.
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+  <!-- SKILLS -->
+
+  <section id="skills">
+
+    <h2 class="title">My <span>Skills</span></h2>
+
+    <div class="skills-grid">
+
+      <div class="skill">
+        <h3>Laravel</h3>
+      </div>
+
+      <div class="skill">
+        <h3>PHP & OOP</h3>
+      </div>
+
+      <div class="skill">
+        <h3>RESTful APIs</h3>
+      </div>
+
+      <div class="skill">
+        <h3>MySQL</h3>
+      </div>
+
+      <div class="skill">
+        <h3>JWT / Sanctum</h3>
+      </div>
+
+      <div class="skill">
+        <h3>Filament PHP</h3>
+      </div>
+
+      <div class="skill">
+        <h3>Git & Github</h3>
+      </div>
+
+      <div class="skill">
+        <h3>Problem Solving</h3>
+      </div>
+
+      <div class="skill">
+        <h3>Realtime Systems</h3>
+      </div>
+
+      <div class="skill">
+        <h3>Laravel Reverb</h3>
+      </div>
+
+      <div class="skill">
+        <h3>Firebase</h3>
+      </div>
+
+      <div class="skill">
+        <h3>Google Maps API</h3>
+      </div>
+
+      <div class="skill">
+        <h3>WebSockets</h3>
+      </div>
+
+      <div class="skill">
+        <h3>Job Queues</h3>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <section id="projects">
+
+    <h2 class="title">My <span>Projects</span></h2>
+
+    <div class="projects-grid">
+
+      <div class="project">
+        <a href="https://www.familydroop.com/" target="_blank">
+        <img src="image/image2.png" alt="">
+
+        <div class="project-content">
+
+          <h3>Family Drop Platform</h3>
+
+          <p>
+            Full Dropshipping platform connecting wholesalers,
+            marketers and merchants with advanced order tracking,
+            reports and profit system.
+          </p>
+        </a>
+        </div>
+
+      </div>
+
+      <div class="project">
+        <a href="file/Wednys Restaurant.pdf" target="_blank">
+        <img src="image/image.png" alt="">
+
+        <div class="project-content">
+
+          <h3>Istanbul Restaurant</h3>
+
+          <p>
+            Restaurant management platform with online ordering,
+            reports, complaints system and employment requests.
+          </p>
+        </a>
+        </div>
+
+      </div>
+
+      <div class="project">
+      <a href="file/AlForqan School.pdf" target="_blank">
+        <img src="image/image3.png" alt="">
+
+        <div class="project-content">
+
+          <h3>Learning Management System</h3>
+
+          <p>
+            Educational platform for selling courses with quizzes,
+            certificates, ratings and lecture progression system.
+          </p>
+        </a>
+        </div>
+
+      </div>
+
+<div class="project">
+
+  <a href="https://taxisawa.com" target="_blank">
+  <img src="image/image4.png" alt="">
+
+  <div class="project-content">
+
+    <h3>Sawa Taxi</h3>
+
+    <p>
+      Real taxi booking platform operating in Beirut.
+      Developed advanced backend services including realtime trip tracking,
+      driver & passenger authentication, Google Maps integration,
+      notifications, job queues and live socket communication using Laravel Reverb.
+    </p>
+    </a>
+  </div>
+
+</div>
+
+    </div>
+
+  </section>
+
+  <!-- CONTACT -->
+
+  <section id="contact">
+
+    <h2 class="title">Contact <span>Me</span></h2>
+
+    <div class="contact-box">
+
+      <h3>Let's Work Together</h3>
+
+      <p>📧 zdiab6967@gmail.com</p>
+
+      <p>📱 +963 938 268 502</p>
+
+      <p>📍 Damascus, Syria</p>
+
+      <a href="https://github.com/ZiadDiab22" class="btn" target="_blank">
+        Github Profile
+      </a>
+
+    </div>
+
+  </section>
+
+  <footer>
+
+    © 2026 Ziad Diab | All Rights Reserved
+
+  </footer>
+
+  <script>
+
+    function darkMode(){
+      document.body.classList.toggle("light");
+    }
+
+  </script>
+
+
+</body>
+</html>
